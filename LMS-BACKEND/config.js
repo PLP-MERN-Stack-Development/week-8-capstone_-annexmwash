@@ -1,0 +1,17 @@
+// config.js
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('✅ MongoDB Connected');
+  } catch (error) {
+    console.error('❌ MongoDB connection failed:', error.message);
+    process.exit(1); // Exit process if there's a DB error
+  }
+};
+
+export default connectDB;
